@@ -29,19 +29,19 @@ namespace Shop.ApplicationServices.Services
             _fileServices = fileServices;
         }
 
-        public async Task<Car> Add(CarDto dto2)
+        public async Task<Car> Add(CarDto dto)
         {
             Car car = new Car();
 
             car.Id = Guid.NewGuid();
-            car.VIN = dto2.VIN;
-            car.Color = dto2.Color;
-            car.Year = dto2.Year;
-            car.Fuel = dto2.Fuel;
-            car.Transmission = dto2.Transmission;
+            car.VIN = dto.VIN;
+            car.Color = dto.Color;
+            car.Year = dto.Year;
+            car.Fuel = dto.Fuel;
+            car.Transmission = dto.Transmission;
             car.CreatedAt = DateTime.Now;
             car.ModifiedAt = DateTime.Now;
-            _fileServices.ProcessUploadFile2(dto2, car);
+            _fileServices.ProcessUploadFile(CarDto,car);
 
             await _context.Car.AddAsync(car);
             await _context.SaveChangesAsync();
@@ -79,7 +79,7 @@ namespace Shop.ApplicationServices.Services
         {
             Car car = new Car();
 
-            car.Id = dto.Id;
+            car.Id =dto.Id;
             car.VIN = dto.VIN;
             car.Color = dto.Color;
             car.Year = dto.Year;

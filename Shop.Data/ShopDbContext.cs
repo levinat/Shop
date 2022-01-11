@@ -6,6 +6,8 @@ namespace Shop.Data
 {
     public class ShopDbContext : IdentityDbContext
     {
+        public object Car;
+
         public ShopDbContext(DbContextOptions<ShopDbContext> options)
             : base(options) { }
 
