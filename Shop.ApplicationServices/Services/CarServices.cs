@@ -41,7 +41,7 @@ namespace Shop.ApplicationServices.Services
             car.Transmission = dto.Transmission;
             car.CreatedAt = DateTime.Now;
             car.ModifiedAt = DateTime.Now;
-            _fileServices.ProcessUploadFile(CarDto,car);
+            _fileServices.ProcessUploadFile(dto, car);
 
             await _context.Car.AddAsync(car);
             await _context.SaveChangesAsync();
@@ -79,7 +79,7 @@ namespace Shop.ApplicationServices.Services
         {
             Car car = new Car();
 
-            car.Id =dto.Id;
+            car.Id = dto.Id;
             car.VIN = dto.VIN;
             car.Color = dto.Color;
             car.Year = dto.Year;
