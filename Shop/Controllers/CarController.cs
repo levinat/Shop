@@ -7,7 +7,6 @@ using Shop.Models.Car;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using ExistingFilePathViewModel = Shop.Models.Car.ExistingFilePathViewModel;
 
 namespace Shop.Controllers
 {
