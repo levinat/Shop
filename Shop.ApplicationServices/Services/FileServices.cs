@@ -116,10 +116,10 @@ namespace Shop.ApplicationServices.Services
 
             return photoId;
         }
-        public async Task<ExistingFilePath> RemoveImage2(ExistingFilePathDto dto2)
+        public async Task<ExistingFilePath> RemoveImage2(ExistingFilePathDto dto)
         {
             var photoId = await _context.ExistingFilePath
-                .FirstOrDefaultAsync(x => x.Id == dto2.Id);
+                .FirstOrDefaultAsync(x => x.Id == dto.Id);
 
             var filePath = _env.WebRootPath + "\\multipleFileUpload\\" + photoId.FilePath;
 

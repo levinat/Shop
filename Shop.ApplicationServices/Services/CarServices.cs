@@ -97,6 +97,7 @@ namespace Shop.ApplicationServices.Services
         public async Task<Car> GetAsync(Guid id)
         {
             var result = await _context.Car
+                .Include(y => y.ExistingFilePaths)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             return result;

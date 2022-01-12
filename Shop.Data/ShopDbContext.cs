@@ -16,4 +16,4 @@ namespace Shop.Data
         public DbSet<ExistingFilePath> ExistingFilePath { get; set; }
         
     }
-}
+} 

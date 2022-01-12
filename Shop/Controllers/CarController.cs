@@ -114,6 +114,7 @@ namespace Shop.Controllers
                 .Where(x => x.CarId == id)
                 .Select(y => new ExistingFilePathViewModel
                 {
+                    CarId = y.CarId,
                     FilePath = y.FilePath,
                     PhotoId = y.Id
                 })
