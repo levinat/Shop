@@ -6,7 +6,7 @@ namespace Shop.Core.Domain
 {
     public class ExistingFilePath
     {
-        public Guid CarId;
+        public Guid? CarId;
 
         public Guid Id { get; set; }
         public string FilePath { get; set; }
