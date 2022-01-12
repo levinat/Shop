@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace Shop.ApplicationServices.Services
 {
-    public class CarServices : IApplicationService
+    public class CarServices : ICarService
     {
         private readonly ShopDbContext _context;
         private readonly IWebHostEnvironment _env;
