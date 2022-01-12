@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace Shop.ApplicationServices.Services
 {
-    public class CarServices : ICarService
+    public class CarServices : IApplicationService
     {
         private readonly ShopDbContext _context;
         private readonly IWebHostEnvironment _env;
@@ -41,7 +41,7 @@ namespace Shop.ApplicationServices.Services
             car.Transmission = dto.Transmission;
             car.CreatedAt = DateTime.Now;
             car.ModifiedAt = DateTime.Now;
-            _fileServices.ProcessUploadFile(dto, car);
+           // _fileServices.ProcessUploadFile(CarDto dto, Car car);
 
             await _context.Car.AddAsync(car);
             await _context.SaveChangesAsync();
@@ -87,7 +87,7 @@ namespace Shop.ApplicationServices.Services
             car.Transmission = dto.Transmission;
             car.CreatedAt = dto.CreatedAt;
             car.ModifiedAt = DateTime.Now;
-            _fileServices.ProcessUploadFile(dto, car);
+           // _fileServices.ProcessUploadFile(dto, car);
 
             _context.Car.Update(car);
             await _context.SaveChangesAsync();
