@@ -185,21 +185,7 @@ namespace Shop.Controllers
             
             return RedirectToAction(nameof(Index));
         }
-        public async Task<IActionResult> RemoveImage2(ExistingFilePathViewModel model)
-        {
-            var dto = new ExistingFilePathDto()
-            {
-                Id = model.PhotoId
-            };
-
-            var photo = await _fileServices.RemoveImage(dto);
-            if (photo == null)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-
-            return RedirectToAction(nameof(Index));
-        }
+        
     }
 
 }
