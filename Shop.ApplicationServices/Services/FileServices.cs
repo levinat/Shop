@@ -21,10 +21,10 @@ namespace Shop.ApplicationServices.Services
         ShopDbContext context,
         IWebHostEnvironment env
         )
-            {
-                _context = context;
-                _env = env;
-            }
+        {
+            _context = context;
+            _env = env;
+        }
 
 
         public string ProcessUploadFile(ProductDto dto, Product product)
@@ -62,8 +62,7 @@ namespace Shop.ApplicationServices.Services
 
             return null;
         }
-
-        public string ProcessUploadFile(SpaceshipDto dto, Spaceship spaceship)
+        public string ProcessUploadFile(CarDto dto, Car car)
         {
             string uniqueFileName = null;
 
@@ -88,7 +87,7 @@ namespace Shop.ApplicationServices.Services
                         {
                             Id = Guid.NewGuid(),
                             FilePath = uniqueFileName,
-                            SpaceshipId = spaceship.Id
+                            CarId = car.Id
                         };
 
                         _context.ExistingFilePath.AddAsync(path);
@@ -99,6 +98,7 @@ namespace Shop.ApplicationServices.Services
             return null;
         }
 
+
         public async Task<ExistingFilePath> RemoveImage(ExistingFilePathDto dto)
         {
             var photoId = await _context.ExistingFilePath
@@ -106,7 +106,24 @@ namespace Shop.ApplicationServices.Services
 
             var filePath = _env.WebRootPath + "\\multipleFileUpload\\" + photoId.FilePath;
 
-            if(File.Exists(filePath))
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            _context.ExistingFilePath.Remove(photoId);
+            await _context.SaveChangesAsync();
+
+            return photoId;
+        }
+        public async Task<ExistingFilePath> RemoveImage2(ExistingFilePathDto dto)
+        {
+            var photoId = await _context.ExistingFilePath
+                .FirstOrDefaultAsync(x => x.Id == dto.Id);
+
+            var filePath = _env.WebRootPath + "\\multipleFileUpload\\" + photoId.FilePath;
+
+            if (File.Exists(filePath))
             {
                 File.Delete(filePath);
             }
@@ -120,6 +137,25 @@ namespace Shop.ApplicationServices.Services
         public async Task<List<ExistingFilePath>> RemoveImages(ExistingFilePathDto[] dto)
         {
             foreach (var dtos in dto)
+            {
+                var photoId = await _context.ExistingFilePath
+                .FirstOrDefaultAsync(x => x.FilePath == dtos.ExistingFilePath);
+
+                var filePath = _env.WebRootPath + "\\multipleFileUpload\\" + photoId.FilePath;
+
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+
+                _context.ExistingFilePath.Remove(photoId);
+                await _context.SaveChangesAsync();
+            }
+            return null;
+        }
+        public async Task<List<ExistingFilePath>> RemoveImages2(ExistingFilePathDto[] dto2)
+        {
+            foreach (var dtos in dto2)
             {
                 var photoId = await _context.ExistingFilePath
                 .FirstOrDefaultAsync(x => x.FilePath == dtos.ExistingFilePath);

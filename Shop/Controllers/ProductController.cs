@@ -77,7 +77,7 @@ namespace Shop.Controllers
 
             var result = await _productService.Add(dto);
 
-            if(result == null)
+            if (result == null)
             {
                 return RedirectToAction(nameof(Index));
             }

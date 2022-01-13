@@ -59,9 +59,9 @@ namespace Shop.ApplicationServices.Services
                 .Where(x => x.ProductId == id)
                 .Select(y => new ExistingFilePathDto
                 {
-                ProductId = y.ProductId,
-                ExistingFilePath = y.FilePath,
-                Id = y.Id
+                    ProductId = y.ProductId,
+                    ExistingFilePath = y.FilePath,
+                    Id = y.Id
                 })
                 .ToArrayAsync();
 
