@@ -10,6 +10,7 @@ namespace Shop.Core.ServiceInterface
     public interface IFileServices : IApplicationService
     {
         string ProcessUploadFile(ProductDto dto, Product product);
+        string ProcessUploadFile(SpaceshipDto dto, Spaceship spaceship);
 
         Task<ExistingFilePath> RemoveImage(ExistingFilePathDto dto);
         Task<List<ExistingFilePath>> RemoveImages(ExistingFilePathDto[] dto);

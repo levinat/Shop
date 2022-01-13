@@ -1,14 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 
-namespace Shop.Core.Domain
+namespace Shop.Core.Dtos
 {
-    public class Spaceship
+    public class SpaceshipDto
     {
-        [Key]
-
         public Guid? Id { get; set; }
         public string Name { get; set; }
         public string Model { get; set; }
@@ -18,8 +15,9 @@ namespace Shop.Core.Domain
         public DateTime LaunchDate { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ModifieAt { get; set; }
-        public IEnumerable<ExistingFilePath> ExistingFilePaths { get; set; }
-    = new List<ExistingFilePath>();
 
+        public List<IFormFile> Files { get; set; }
+        public IEnumerable<ExistingFilePathDto> ExistingFilePaths { get; set; }
+            = new List<ExistingFilePathDto>();
     }
 }
