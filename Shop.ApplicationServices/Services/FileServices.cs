@@ -62,7 +62,7 @@ namespace Shop.ApplicationServices.Services
 
             return null;
         }
-        public string ProcessUploadFile(CarDto dto, Car car)
+        public string ProcessUploadFile(SpaceshipDto dto, Spaceship spaceship)
         {
             string uniqueFileName = null;
 
@@ -87,7 +87,7 @@ namespace Shop.ApplicationServices.Services
                         {
                             Id = Guid.NewGuid(),
                             FilePath = uniqueFileName,
-                            CarId = car.Id
+                            SpaceshipId = spaceship.Id
                         };
 
                         _context.ExistingFilePath.AddAsync(path);
