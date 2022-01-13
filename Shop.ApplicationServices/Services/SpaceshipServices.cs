@@ -39,8 +39,8 @@ namespace Shop.ApplicationServices.Services
             spaceship.Company = dto.Company;
             spaceship.EnginePower = dto.EnginePower;
             spaceship.Country = dto.Country;
-            spaceship.LaunchDate = DateTime.Now;
-            spaceship.CreatedAt = DateTime.Now;
+            spaceship.LaunchDate = dto.LaunchDate;
+            spaceship.CreatedAt = dto.CreatedAt;
             spaceship.ModifieAt = DateTime.Now;
             _fileServices.ProcessUploadFile(dto, spaceship);
 
@@ -54,21 +54,21 @@ namespace Shop.ApplicationServices.Services
         public async Task<Spaceship> Delete(Guid id)
         {
             var spaceshipId = await _context.Spaceship
-                .Include(x => x.ExistingFilePaths)
+               // .Include(x => x.ExistingFilePaths)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             var photos = await _context.ExistingFilePath
                 .Where(x => x.SpaceshipId == id)
-                .Select(y => new ExistingFilePathDto
+               /* .Select(y => new ExistingFilePathDto
                 {
                     SpaceshipId = y.SpaceshipId,
                     ExistingFilePath = y.FilePath,
                     Id = y.Id
-                })
+                })*/
                 .ToArrayAsync();
 
 
-            await _fileServices.RemoveImages(photos);
+           // await _fileServices.RemoveImages(photos);
             _context.Spaceship.Remove(spaceshipId);
             await _context.SaveChangesAsync();
 
@@ -80,16 +80,16 @@ namespace Shop.ApplicationServices.Services
         {
             Spaceship spaceship = new Spaceship();
 
-            spaceship.Id = Guid.NewGuid();
+            spaceship.Id = dto.Id;
             spaceship.Name = dto.Name;
             spaceship.Model = dto.Model;
             spaceship.Company = dto.Company;
             spaceship.EnginePower = dto.EnginePower;
             spaceship.Country = dto.Country;
-            spaceship.LaunchDate = DateTime.Now;
-            spaceship.CreatedAt = DateTime.Now;
+            spaceship.LaunchDate = dto.LaunchDate;
+            spaceship.CreatedAt = dto.CreatedAt;
             spaceship.ModifieAt = DateTime.Now;
-            _fileServices.ProcessUploadFile(dto, spaceship);
+            //_fileServices.ProcessUploadFile(dto, spaceship);
 
             _context.Spaceship.Update(spaceship);
             await _context.SaveChangesAsync();
@@ -99,7 +99,7 @@ namespace Shop.ApplicationServices.Services
         public async Task<Spaceship> GetAsync(Guid id)
         {
             var result = await _context.Spaceship
-                .Include(y => y.ExistingFilePaths)
+              //  .Include(y => y.ExistingFilePaths)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             return result;

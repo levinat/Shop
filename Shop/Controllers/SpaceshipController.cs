@@ -41,7 +41,8 @@ namespace Shop.Controllers
                     Model = x.Model,
                     Company = x.Company,
                     EnginePower = x.EnginePower,
-                    Country = x.Country
+                    Country = x.Country,
+                    LaunchDate = x.LaunchDate
 
                 });
 
@@ -57,20 +58,21 @@ namespace Shop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(SpaceshipViewModel model)
+        public async Task<IActionResult> Add(SpaceshipViewModel vm)
         {
             var dto = new SpaceshipDto()
             {
-                Id = model.Id,
-                Name = model.Name,
-                Model = model.Model,
-                Company = model.Company,
-                EnginePower = model.EnginePower,
-                LaunchDate = model.LaunchDate,
-                CreatedAt = model.CreatedAt,
-                ModifieAt = model.ModifieAt,
-                Files = model.Files,
-                ExistingFilePaths = model.ExistingFilePaths.Select(x => new ExistingFilePathDto
+                Id = vm.Id,
+                Name = vm.Name,
+                Model = vm.Model,
+                Company = vm.Company,
+                EnginePower = vm.EnginePower,
+                Country = vm.Country,
+                LaunchDate = vm.LaunchDate,
+                CreatedAt = vm.CreatedAt,
+                ModifieAt = vm.ModifieAt,
+                Files = vm.Files,
+                ExistingFilePaths = vm.ExistingFilePaths.Select(x => new ExistingFilePathDto
                 {
                     Id = x.PhotoId,
                     ExistingFilePath = x.FilePath,
@@ -85,7 +87,7 @@ namespace Shop.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return RedirectToAction("Index", model);
+            return RedirectToAction("Index", vm);
         }
 
         [HttpPost]
@@ -137,21 +139,21 @@ namespace Shop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(SpaceshipViewModel model)
+        public async Task<IActionResult> Edit(SpaceshipViewModel vm)
         {
             var dto = new SpaceshipDto()
             {
-                Id = model.Id,
-                Name = model.Name,
-                Model = model.Model,
-                Company = model.Company,
-                EnginePower =model.EnginePower,
-                Country = model.Country,
-                LaunchDate = model.LaunchDate,
-                ModifieAt = model.ModifieAt,
-                CreatedAt = model.CreatedAt,
-                Files = model.Files,
-                ExistingFilePaths = model.ExistingFilePaths
+                Id = vm.Id,
+                Name = vm.Name,
+                Model = vm.Model,
+                Company = vm.Company,
+                EnginePower = vm.EnginePower,
+                Country = vm.Country,
+                LaunchDate = vm.LaunchDate,
+                ModifieAt = vm.ModifieAt,
+                CreatedAt = vm.CreatedAt,
+                Files = vm.Files,
+                ExistingFilePaths = vm.ExistingFilePaths
                 .Select(x => new ExistingFilePathDto
                 {
                     Id = x.PhotoId,
@@ -167,7 +169,7 @@ namespace Shop.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return RedirectToAction(nameof(Index), model);
+            return RedirectToAction(nameof(Index), vm);
         }
 
 
