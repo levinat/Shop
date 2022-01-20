@@ -15,7 +15,6 @@ namespace Shop.Core.ServiceInterface
         Task<ExistingFilePath> RemoveImage(ExistingFilePathDto dto);
         Task<List<ExistingFilePath>> RemoveImages(ExistingFilePathDto[] dto);
 
-        Task<FileToDatabaseDto> RemoveImage(FileToDatabaseDto dto);
-        Task<List<FileToDatabaseDto>> RemoveImages(FileToDatabaseDto[] dto);
+      
     }
 }

@@ -72,6 +72,7 @@ namespace Shop.Controllers
                 LaunchDate = vm.LaunchDate,
                 CreatedAt = vm.CreatedAt,
                 ModifieAt = vm.ModifieAt,
+                Files = vm.Files,
                 Image = vm.Image.Select(x => new FileToDatabaseDto
                 {
                     Id = x.Id,
