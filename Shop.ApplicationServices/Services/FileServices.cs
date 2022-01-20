@@ -153,24 +153,7 @@ namespace Shop.ApplicationServices.Services
             }
             return null;
         }
-        public async Task<List<ExistingFilePath>> RemoveImages2(ExistingFilePathDto[] dto2)
-        {
-            foreach (var dtos in dto2)
-            {
-                var photoId = await _context.ExistingFilePath
-                .FirstOrDefaultAsync(x => x.FilePath == dtos.ExistingFilePath);
-
-                var filePath = _env.WebRootPath + "\\multipleFileUpload\\" + photoId.FilePath;
-
-                if (File.Exists(filePath))
-                {
-                    File.Delete(filePath);
-                }
-
-                _context.ExistingFilePath.Remove(photoId);
-                await _context.SaveChangesAsync();
-            }
-            return null;
-        }
+        
+        
     }
 }

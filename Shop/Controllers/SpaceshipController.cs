@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shop.Core.Dtos;
 using Shop.Core.ServiceInterface;
 using Shop.Data;
+using Shop.Models.Product;
 using Shop.Models.Spaceship;
 using System;
 using System.Linq;
@@ -26,7 +28,7 @@ namespace Shop.Controllers
             _context = context;
             _spaceshipService = spaceshipService;
             _fileServices = fileServices;
-        } 
+        }
 
         //ListItem
         [HttpGet]
@@ -43,7 +45,6 @@ namespace Shop.Controllers
                     EnginePower = x.EnginePower,
                     Country = x.Country,
                     LaunchDate = x.LaunchDate
-
                 });
 
             return View(result);
@@ -70,14 +71,8 @@ namespace Shop.Controllers
                 Country = vm.Country,
                 LaunchDate = vm.LaunchDate,
                 CreatedAt = vm.CreatedAt,
-                ModifieAt = vm.ModifieAt,
-                Files = vm.Files,
-                ExistingFilePaths = vm.ExistingFilePaths.Select(x => new ExistingFilePathDto
-                {
-                    Id = x.PhotoId,
-                    ExistingFilePath = x.FilePath,
-                    SpaceshipId = x.SpaceshipId
-                }).ToArray()
+                ModifieAt = vm.ModifieAt
+
             };
 
             var result = await _spaceshipService.Add(dto);
@@ -113,14 +108,7 @@ namespace Shop.Controllers
                 return NotFound();
             }
 
-            var photos = await _context.ExistingFilePath
-                .Where(x => x.ProductId == id)
-                .Select(y => new ExistingFilePathViewModel
-                {
-                    FilePath = y.FilePath,
-                    PhotoId = y.Id
-                })
-                .ToArrayAsync();
+
 
             var model = new SpaceshipViewModel();
 
@@ -131,9 +119,9 @@ namespace Shop.Controllers
             model.EnginePower = spaceship.EnginePower;
             model.Country = spaceship.Country;
             model.LaunchDate = spaceship.LaunchDate;
-            model.ModifieAt = spaceship.ModifieAt;
             model.CreatedAt = spaceship.CreatedAt;
-            model.ExistingFilePaths.AddRange(photos);
+            model.ModifieAt = spaceship.ModifieAt;
+
 
             return View(model);
         }
@@ -150,44 +138,18 @@ namespace Shop.Controllers
                 EnginePower = vm.EnginePower,
                 Country = vm.Country,
                 LaunchDate = vm.LaunchDate,
-                ModifieAt = vm.ModifieAt,
                 CreatedAt = vm.CreatedAt,
-                Files = vm.Files,
-                ExistingFilePaths = vm.ExistingFilePaths
-                .Select(x => new ExistingFilePathDto
-                {
-                    Id = x.PhotoId,
-                    ExistingFilePath = x.FilePath,
-                    SpaceshipId = x.SpaceshipId
-                }).ToArray()
+                ModifieAt = vm.ModifieAt,
+
             };
 
             var result = await _spaceshipService.Update(dto);
-
             if (result == null)
             {
                 return RedirectToAction(nameof(Index));
             }
 
             return RedirectToAction(nameof(Index), vm);
-        }
-
-
-        [HttpPost]
-        public async Task<IActionResult> RemoveImage(ExistingFilePathViewModel model)
-        {
-            var dto = new ExistingFilePathDto()
-            {
-                Id = model.PhotoId
-            };
-
-            var photo = await _fileServices.RemoveImage(dto);
-            if (photo == null)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-
-            return RedirectToAction(nameof(Index));
         }
     }
 }
