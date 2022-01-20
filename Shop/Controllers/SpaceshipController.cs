@@ -71,7 +71,15 @@ namespace Shop.Controllers
                 Country = vm.Country,
                 LaunchDate = vm.LaunchDate,
                 CreatedAt = vm.CreatedAt,
-                ModifieAt = vm.ModifieAt
+                ModifieAt = vm.ModifieAt,
+                Image = vm.Image.Select(x => new FileToDatabaseDto
+                {
+                    Id = x.Id,
+                    ImageData = x.ImageData,
+                    ImageTitle = x.ImageTitle,
+                    SpaceshipId = x.SpaceshipId
+                   
+                }).ToArray()
 
             };
 
@@ -108,7 +116,16 @@ namespace Shop.Controllers
                 return NotFound();
             }
 
-
+            var photos = await _context.FileToDatabase
+                .Where(x => x.SpaceshipId == id)
+                .Select(y => new ImageViewModel
+                { 
+                    ImageData = y.ImageData,
+                    Id = y.Id,
+                    Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData)),
+                    ImageTitle = y.ImageTitle,
+                    SpaceshipId = y.Id
+                }).ToArrayAsync();
 
             var model = new SpaceshipViewModel();
 
@@ -121,6 +138,7 @@ namespace Shop.Controllers
             model.LaunchDate = spaceship.LaunchDate;
             model.CreatedAt = spaceship.CreatedAt;
             model.ModifieAt = spaceship.ModifieAt;
+            model.Image.AddRange(photos);
 
 
             return View(model);
@@ -140,6 +158,16 @@ namespace Shop.Controllers
                 LaunchDate = vm.LaunchDate,
                 CreatedAt = vm.CreatedAt,
                 ModifieAt = vm.ModifieAt,
+                Files = vm.Files,
+                Image = vm.Image.Select(x => new FileToDatabaseDto
+                {
+                    Id = x.Id,
+                    ImageData = x.ImageData,
+                    ImageTitle = x.ImageTitle,
+                    SpaceshipId = x.SpaceshipId
+
+                })
+
 
             };
 

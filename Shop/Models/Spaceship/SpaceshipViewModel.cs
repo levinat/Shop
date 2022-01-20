@@ -19,12 +19,8 @@ namespace Shop.Models.Spaceship
         public DateTime ModifieAt { get; set; }
 
         public List<IFormFile> Files { get; set; }
-        public List<ExistingFilePathViewModel> ExistingFilePaths { get; set; } = new List<ExistingFilePathViewModel>();
-    }
-    public class ExistingFilePathViewModel
-    {
-        public Guid PhotoId { get; set; }
-        public string FilePath { get; set; }
-        public Guid? SpaceshipId { get; set; }
+
+        public List<ImageViewModel> Image { get; set; } = new List<ImageViewModel>();
+
     }
 }

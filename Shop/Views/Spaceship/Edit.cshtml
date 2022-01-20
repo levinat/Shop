@@ -59,6 +59,21 @@ else
             </div>
         </div>
 
+        <div class="form-group row">
+            <label asp-for="Files" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-5">
+                <div class="custom-file">
+                    <input class="form-control custom-file-input" asp-for="Files" multiple type="file" />
+                    <label class="custom-file-label">Choose File...</label>
+                </div>
+            </div>
+        </div>
+
+        @foreach (var photo in Model.Image)
+        {
+            <partial name="_Photo" model="photo" />
+        }
+
 
 
 
