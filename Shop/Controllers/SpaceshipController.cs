@@ -179,5 +179,22 @@ namespace Shop.Controllers
 
             return RedirectToAction(nameof(Index), vm);
         }
+     
+        [HttpPost]
+        public async Task<IActionResult> RemoveImage(ImageViewModel file)
+        {
+            var dto = new FileToDatabaseDto()
+            {
+                Id = file.Id
+            };
+
+            var image = await _spaceshipService.RemoveImage(dto);
+            if (image == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
