@@ -8,6 +8,7 @@ using Shop.Core.ServiceInterface;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Shop.ApplicationServices.Services
 {
@@ -105,6 +106,7 @@ namespace Shop.ApplicationServices.Services
 
         public byte[] UploadFile(SpaceshipDto dto, Spaceship spaceship)
         {
+
             if (dto.Files != null && dto.Files.Count > 0)
             {
                 foreach (var photo in dto.Files)
@@ -128,16 +130,17 @@ namespace Shop.ApplicationServices.Services
 
             return null;
         }
-
         public async Task<FileToDatabase> RemoveImage(FileToDatabaseDto dto)
         {
-            var image = await _context.FileToDatabase
+            var imageId = await _context.FileToDatabase
+                .Where(x => x.Id == dto.Id)
                 .FirstOrDefaultAsync(x => x.Id == dto.Id);
 
-            _context.FileToDatabase.Remove(image);
+            _context.FileToDatabase.Remove(imageId);
             await _context.SaveChangesAsync();
 
-            return image;
+            return imageId;
+
         }
 
     }
