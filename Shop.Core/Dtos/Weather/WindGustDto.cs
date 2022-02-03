@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Shop.Models.Weather
+namespace Shop.Core.Dto.Weather
 {
-    public class WindGust
+    public class WindGustDto
     {
-        public Speed Speed { get; set; }
+        public SpeedDto Speed { get; set; }
     }
 }

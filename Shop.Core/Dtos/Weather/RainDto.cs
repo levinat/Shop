@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Shop.Models.Weather
-{
-    public class SolarIrradiance
+namespace Shop.Core.Dto.Weather
+{ 
+    public class RainDto
     {
         public double Value { get; set; }
         public string Unit { get; set; }

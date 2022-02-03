@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Shop.Models.Weather
+namespace Shop.Core.Dto.Weather
 {
-    public class Night
+    public class NightDto
     {
         public Int32 Icon { get; set; }
         public string IconPhrase { get; set; }
-        public LocalSource LocalSource { get; set; }
+        public LocalSourceDto LocalSource { get; set; }
         public Boolean HasPrecipitation { get; set; }
         public string PrecipitationType { get; set; }
         public string PrecipitationIntensity { get; set; }
@@ -20,17 +20,17 @@ namespace Shop.Models.Weather
         public Int32 RainProbability { get; set; }
         public Int32 SnowProbability { get; set; }
         public Int32 IceProbability { get; set; }
-        public Wind Wind { get; set; }
-        public WindGust WindGust { get; set; }
-        public TotalLiquid TotalLiquid { get; set; }
-        public Rain Rain { get; set; }
-        public Snow Snow { get; set; }
-        public Ice Ice { get; set; }
+        public WindDto Wind { get; set; }
+        public WindGustDto WindGust { get; set; }
+        public TotalLiquidDto TotalLiquid { get; set; }
+        public RainDto Rain { get; set; }
+        public SnowDto Snow { get; set; }
+        public IceDto Ice { get; set; }
         public float HoursOfPrecipitation { get; set; }
         public float HoursOfRain { get; set; }
         public Int32 CloudCover { get; set; }
-        public Evapotranspiration Evapotranspiration { get; set; }
-        public Evapotranspiration SolarIrradiance { get; set; }
+        public EvapotranspirationDto Evapotranspiration { get; set; }
+        public EvapotranspirationDto SolarIrradiance { get; set; }
 
 
     }

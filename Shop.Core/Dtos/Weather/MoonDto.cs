@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Shop.Models.Weather
+namespace Shop.Core.Dto.Weather
 {
-    public class Moon
+    public class MoonDto
     {
         public string Rise { get; set; }
         public Int64 EpochRise { get; set; }

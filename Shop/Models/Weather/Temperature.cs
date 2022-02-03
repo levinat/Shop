@@ -1,4 +1,4 @@
-﻿namespace StoredProceduresTask.Models.Weather
+﻿namespace Shop.Models.Weather
 {
     public class Temperature
     {

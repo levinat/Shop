@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Shop.Models.Weather
+namespace Shop.Core.Dto.Weather
 {
-    public class AirAndPollen
+    public class AirAndPollenDto
     {
         public string Name { get; set; }
         public Int32 Value { get; set; }
