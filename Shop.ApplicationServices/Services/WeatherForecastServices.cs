@@ -1,17 +1,14 @@
-﻿using Nancy.Json;
-using Shop.Core.Dto.Weather;
-using Shop.Core.Dtos.Weather;
+﻿using System.Net;
+using Nancy.Json;
 using Shop.Core.ServiceInterface;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
+using Shop.Core.Dtos.Weather;
+using Shop.Core.Dto.Weather;
 
 namespace Shop.ApplicationServices.Services
 {
     public class WeatherForecastServices : IWeatherForecastServices
-
     {
+
         public string WeatherDetail(string city)
         {
             string apikey = "wvXzY2ev4SxvtuulTE67P9W9eqQ5AkFf";
@@ -21,7 +18,7 @@ namespace Shop.ApplicationServices.Services
             {
                 string json = client.DownloadString(url);
                 DailyForecastsDto weatherInfo = (new JavaScriptSerializer()).Deserialize<DailyForecastsDto>(json);
-                HeadLineDto headlineInfo = (new JavaScriptSerializer()).Deserialize<HeadlineDto>(json);
+                HeadlineDto headlineInfo = (new JavaScriptSerializer()).Deserialize<HeadlineDto>(json);
 
                 WeatherResultDto result = new WeatherResultDto();
 
@@ -34,19 +31,16 @@ namespace Shop.ApplicationServices.Services
                 result.EndEpochDate = headlineInfo.EndEpochDate;
                 result.MobileLink = headlineInfo.MobileLink;
                 result.Link = headlineInfo.Link;
-                result.DailyForecastsDate = headlineInfo.DailyForecastsDate;
-                result.DailyForecastsEpochDate = headlineInfo.DailyForecastsEpochDate;
+                result.DailyForecastsDate = weatherInfo.Date;
+                result.DailyForecastsEpochDate = weatherInfo.EpochDate;
                 result.TempMinValue = weatherInfo.Temperature.Minimum.Value;
                 result.TempMinUnit = weatherInfo.Temperature.Minimum.Unit;
-                result.TempMinUnitType = weatherInfo.Temperature.Minimum.Unit.Type;
+                result.TempMinUnitType = weatherInfo.Temperature.Minimum.UnitType;
 
-                var jsonString = new JavaScriptSerializer().Serializer(result);
+                var jsonString = new JavaScriptSerializer().Serialize(result);
 
                 return jsonString;
-
             }
         }
-
     }
 }
-

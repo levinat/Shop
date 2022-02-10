@@ -1,22 +1,10 @@
-﻿using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
-using Newtonsoft.Json;
-using Nancy.Json;
-using Shop.Core.Dtos;
-using Shop.Core.ServiceInterface;
-using Shop.Core.Dtos.Weather;
-using Shop.Core.Dto.Weather;
-
+﻿using System;
 
 
 namespace Shop.Core.Dtos.Weather
 {
     public class WeatherResultDto
     {
-
         public string EffectiveDate { get; set; }
         public Int64 EffectiveEpochDate { get; set; }
         public int Severity { get; set; }
@@ -29,15 +17,18 @@ namespace Shop.Core.Dtos.Weather
         public string DailyForecastsDate { get; set; }
         public int DailyForecastsEpochDate { get; set; }
 
-
         public double TempMinValue { get; set; }
         public string TempMinUnit { get; set; }
+        public int TempMinUnitType { get; set; }
+
+        public double TempMaxValue { get; set; }
+        public string TempMaxUnit { get; set; }
         public int TempMaxUnitType { get; set; }
+
         public int DayIcon { get; set; }
         public string DayIconPhrase { get; set; }
         public bool DayHasPrecipitation { get; set; }
-
-        public string DayPrecipitationType { get; set;}
+        public string DayPrecipitationType { get; set; }
         public string DayPrecipitationIntensity { get; set; }
 
         public int NightIcon { get; set; }
@@ -48,5 +39,3 @@ namespace Shop.Core.Dtos.Weather
         public string Link { get; set; }
     }
 }
-
-
