@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Shop.Core.Dtos.Weather;
+using System.Threading.Tasks;
+
 
 namespace Shop.Core.ServiceInterface
 {
     public interface IWeatherForecastServices : IApplicationService
     {
-        string WeatherDetail(string city);
+        Task<WeatherResultDto> WeatherDetail(WeatherResultDto dto);
     }
 }

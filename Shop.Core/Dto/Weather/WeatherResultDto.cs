@@ -34,6 +34,8 @@ namespace Shop.Core.Dtos.Weather
         public int NightIcon { get; set; }
         public string NightIconPhrase { get; set; }
         public bool NightHasPrecipitation { get; set; }
+        public string NightPrecipitationType { get; set; }
+        public string NightPrecipitationIntensity { get; set; }
 
         public string MobileLink { get; set; }
         public string Link { get; set; }
