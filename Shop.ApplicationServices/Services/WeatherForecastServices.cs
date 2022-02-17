@@ -17,25 +17,25 @@ namespace Shop.ApplicationServices.Services
             using (WebClient client = new WebClient())
             {
                 string json = client.DownloadString(url);
-                DailyForecastsDto weatherInfo = (new JavaScriptSerializer()).Deserialize<DailyForecastsDto>(json);
+                WeatherRootDto weatherInfo = (new JavaScriptSerializer()).Deserialize<WeatherRootDto>(json);
                 HeadlineDto headlineInfo = (new JavaScriptSerializer()).Deserialize<HeadlineDto>(json);
 
                 WeatherResultDto result = new WeatherResultDto();
 
-                result.EffectiveDate = headlineInfo.EffectiveDate;
-                result.EffectiveEpochDate = headlineInfo.EffectiveEpochDate;
-                result.Severity = headlineInfo.Severity;
-                result.Text = headlineInfo.Text;
-                result.Category = headlineInfo.Category;
-                result.EndDate = headlineInfo.EndDate;
-                result.EndEpochDate = headlineInfo.EndEpochDate;
-                result.MobileLink = headlineInfo.MobileLink;
-                result.Link = headlineInfo.Link;
-                result.DailyForecastsDate = weatherInfo.Date;
-                result.DailyForecastsEpochDate = weatherInfo.EpochDate;
-                result.TempMinValue = weatherInfo.Temperature.Minimum.Value;
-                result.TempMinUnit = weatherInfo.Temperature.Minimum.Unit;
-                result.TempMinUnitType = weatherInfo.Temperature.Minimum.UnitType;
+                result.EffectiveDate = weatherInfo.Headline.EffectiveDate;
+                result.EffectiveEpochDate = weatherInfo.Headline.EffectiveEpochDate;
+                result.Severity = weatherInfo.Headline.Severity;
+                result.Text = weatherInfo.Headline.Text;
+                result.Category = weatherInfo.Headline.Category;
+                result.EndDate = weatherInfo.Headline.EndDate;
+                result.EndEpochDate = weatherInfo.Headline.EndEpochDate;
+                result.MobileLink = weatherInfo.Headline.MobileLink;
+                result.Link = weatherInfo.Headline.Link;
+                result.DailyForecastsDate = weatherInfo.DailyForecasts.Date;
+                result.DailyForecastsEpochDate = weatherInfo.DailyForecasts.EpochDate;
+                result.TempMinValue = weatherInfo.DailyForecasts.Temperature.Minimum.Value;
+                result.TempMinUnit = weatherInfo.DailyForecasts.Temperature.Minimum.Unit;
+                result.TempMinUnitType = weatherInfo.DailyForecasts.Temperature.Minimum.UnitType;
 
                 var jsonString = new JavaScriptSerializer().Serialize(result);
 

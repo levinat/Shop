@@ -32,7 +32,7 @@ namespace Shop.Controllers
         public IActionResult City(string city)
         {
             var weatherResponse = 1;
-            City vm = new City();
+            CityViewModel vm = new CityViewModel();
 
 
             return View(vm);

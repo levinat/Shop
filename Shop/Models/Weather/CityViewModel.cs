@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace Shop.Models.Weather
 {
-    public class City
+    public class CityViewModel
     {
+
     }
 }
