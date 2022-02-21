@@ -13,6 +13,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Shop.Core.ServiceInterface;
 using Shop.ApplicationServices.Services;
+using Shop.Repositories;
+using OpenWeather.Repositories;
 
 namespace Shop
 {
@@ -30,14 +32,15 @@ namespace Shop
             options.UseSqlServer(_configuration["DefaultConnection"]));
 
 
-
+            services.AddScoped<IOpenWeatherRepository, OpenWeatherRepository>();
             services.AddScoped<IProductService, ProductServices>();
             services.AddScoped<IFileServices, FileServices>();
             services.AddScoped<ISpaceshipService, SpaceshipServices>();
-            services.AddScoped<IWeatherForecastServices, WeatherForecastServices>();
+           
 
             services.AddControllersWithViews();
         }
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

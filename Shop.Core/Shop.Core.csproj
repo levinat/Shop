@@ -5,6 +5,77 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Views\Home\Index.cshtml" />
+	  <None Remove="Views\Home\Privacy.cshtml" />
+	  <None Remove="Views\Product\Edit.cshtml" />
+	  <None Remove="Views\Product\Index.cshtml" />
+	  <None Remove="Views\Product\_Photo.cshtml" />
+	  <None Remove="Views\Shared\Error.cshtml" />
+	  <None Remove="Views\Shared\_Layout.cshtml" />
+	  <None Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+	  <None Remove="Views\Spaceship\Edit.cshtml" />
+	  <None Remove="Views\Spaceship\Index.cshtml" />
+	  <None Remove="Views\Spaceship\_Photo.cshtml" />
+	  <None Remove="Views\_ViewImports.cshtml" />
+	  <None Remove="Views\_ViewStart.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Views\Home\Index.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\Home\Privacy.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\Product\Edit.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\Product\Index.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\Product\_Photo.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\Shared\Error.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\Shared\_Layout.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\Spaceship\Edit.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\Spaceship\Index.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\Spaceship\_Photo.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\_ViewImports.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Views\_ViewStart.cshtml">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.20" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.20" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
