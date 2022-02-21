@@ -81,7 +81,6 @@ namespace Shop.Controllers
 =======
             var weatherResponse = 1;
             CityViewModel vm = new CityViewModel();
->>>>>>> e9ca39bb0a5edc9288b8ec0a68689bd10a73f839
 
             vm.MobileLink = dto.MobileLink;
             vm.Link = dto.Link;
