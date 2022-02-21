@@ -43,7 +43,6 @@ namespace Shop.Controllers
         [HttpGet]
         public IActionResult City(string city)
         {
-<<<<<<< HEAD
             WeatherResultDto dto = new WeatherResultDto();
 
             var weatherResponse = _weatherForecastServices.WeatherDetail(dto);
@@ -78,10 +77,6 @@ namespace Shop.Controllers
             vm.NightHasPrecipitation = dto.NightHasPrecipitation;
             vm.NightPrecipitationType = dto.NightPrecipitationType;
             vm.NightPrecipitationIntensity = dto.NightPrecipitationIntensity;
-=======
-            var weatherResponse = 1;
-            CityViewModel vm = new CityViewModel();
->>>>>>> e9ca39bb0a5edc9288b8ec0a68689bd10a73f839
 
             vm.MobileLink = dto.MobileLink;
             vm.Link = dto.Link;

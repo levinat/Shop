@@ -17,7 +17,6 @@ namespace Shop.ApplicationServices.Services
             using (WebClient client = new WebClient())
             {
                 string json = client.DownloadString(url);
-<<<<<<< HEAD
                 //ainult ühe classi saab deserialiseerida
                 WeatherRootDto weatherInfo = (new JavaScriptSerializer()).Deserialize<WeatherRootDto>(json);
 
@@ -58,31 +57,6 @@ namespace Shop.ApplicationServices.Services
                 var jsonString = new JavaScriptSerializer().Serialize(dto);
 
                 //return jsonString;
-=======
-                WeatherRootDto weatherInfo = (new JavaScriptSerializer()).Deserialize<WeatherRootDto>(json);
-                HeadlineDto headlineInfo = (new JavaScriptSerializer()).Deserialize<HeadlineDto>(json);
-
-                WeatherResultDto result = new WeatherResultDto();
-
-                result.EffectiveDate = weatherInfo.Headline.EffectiveDate;
-                result.EffectiveEpochDate = weatherInfo.Headline.EffectiveEpochDate;
-                result.Severity = weatherInfo.Headline.Severity;
-                result.Text = weatherInfo.Headline.Text;
-                result.Category = weatherInfo.Headline.Category;
-                result.EndDate = weatherInfo.Headline.EndDate;
-                result.EndEpochDate = weatherInfo.Headline.EndEpochDate;
-                result.MobileLink = weatherInfo.Headline.MobileLink;
-                result.Link = weatherInfo.Headline.Link;
-                result.DailyForecastsDate = weatherInfo.DailyForecasts.Date;
-                result.DailyForecastsEpochDate = weatherInfo.DailyForecasts.EpochDate;
-                result.TempMinValue = weatherInfo.DailyForecasts.Temperature.Minimum.Value;
-                result.TempMinUnit = weatherInfo.DailyForecasts.Temperature.Minimum.Unit;
-                result.TempMinUnitType = weatherInfo.DailyForecasts.Temperature.Minimum.UnitType;
-
-                var jsonString = new JavaScriptSerializer().Serialize(result);
-
-                return jsonString;
->>>>>>> e9ca39bb0a5edc9288b8ec0a68689bd10a73f839
             }
             return dto;
         }
