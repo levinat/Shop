@@ -83,7 +83,7 @@ namespace Shop.SpaceshipTest
 
             await Svc<ISpaceshipService>().Update(spaceship);
 
-            Assert.NotEmpty((System.Collections.IEnumerable)spaceship);
+            Assert.NotNull((System.Collections.IEnumerable)spaceship);
         }
     }
 }
